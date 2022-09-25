@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_juman/config/alert_top.dart';
 import 'package:quiz_juman/ui/auth/otp_auth.dart';
 
 class Login extends StatefulWidget {
@@ -50,8 +51,10 @@ class _LoginState extends State<Login> {
               onPressed: () {
                 if (controllerText.text != '') {
                   Navigator.of(context).pushNamed(OtpScreen.routeName,
-                      arguments: controllerText.text.trim());
-                } else {}
+                      arguments: controllerText.text);
+                } else {
+                  AlertTop.alertTop(context, 'must enter your mobile');
+                }
               },
               child: Text('Start'))
         ],

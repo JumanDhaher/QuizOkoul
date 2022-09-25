@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_juman/config/routes_app.dart';
 import 'package:quiz_juman/ui/auth/login.dart';
 
 void main() {
@@ -16,7 +17,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
       ),
-      home: const Login(),
+      routes: RoutesApp.routesApp(),
+      //home: const Login(),
     );
   }
 }

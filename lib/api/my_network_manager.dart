@@ -46,7 +46,7 @@ class MyNetworkManager {
             'Accept': 'application/json',
             'Authorization': 'Bearer $token',
           },
-          body: maps);
+          body: json.encode(maps));
       print('request' + response.request.toString());
       print(response.statusCode);
       if (response.statusCode == 200) {
