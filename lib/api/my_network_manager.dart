@@ -1,35 +1,42 @@
 import 'dart:convert';
-import 'dart:io';
-import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:http/http.dart' as http;
 
 import '../config/token.dart';
 
 class MyNetworkManager {
+  static Future getDataList(String url) async {
+    var token = await Token.getTokens();
+    try {
+      Map<String, String> headers = {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      };
+      final response = await http.get(Uri.parse(url), headers: headers);
+      final extractedData = json.decode(response.body);
+
+      print('request' + response.request.toString());
+      print(response.statusCode);
+      print(extractedData.runtimeType);
+      return extractedData;
+    } catch (error) {
+      //throw (error);
+    }
+  }
+
   static Future<Map<String, dynamic>?> getData(String url) async {
     var token = await Token.getTokens();
     try {
-      bool value;
-      if (kIsWeb) {
-        value = true;
-      } else {
-        final result = await InternetAddress.lookup('google.com');
-        value = result.isNotEmpty && result[0].rawAddress.isNotEmpty;
-      }
+      Map<String, String> headers = {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      };
+      final response = await http.get(Uri.parse(url), headers: headers);
+      final extractedData = json.decode(response.body);
 
-      if (value) {
-        final response = await http.get(Uri.parse(url), headers: {
-          'Authorization': 'Bearer $token',
-        });
-        final extractedData =
-            json.decode(response.body) as Map<String, dynamic>;
-
-        print('request' + response.request.toString());
-        print(response.statusCode);
-
-        return extractedData;
-      }
-      return null;
+      print('request' + response.request.toString());
+      print(response.statusCode);
+      print(extractedData);
+      return extractedData;
     } catch (error) {
       return null;
 
@@ -37,19 +44,14 @@ class MyNetworkManager {
     }
   }
 
-  static Future<Map?> postData(String url, Map<String, dynamic> maps) async {
-    var token = await Token.getTokens();
-
+  static Future<Map?> postData(String url, Map<String, dynamic> maps,
+      Map<String, String> headers) async {
     try {
-      final response = await http.post(Uri.parse(url),
-          headers: {
-            'Accept': 'application/json',
-            'Authorization': 'Bearer $token',
-          },
-          body: json.encode(maps));
+      final response =
+          await http.post(Uri.parse(url), headers: headers, body: maps);
       print('request' + response.request.toString());
       print(response.statusCode);
-      if (response.statusCode == 200) {
+      if (response.statusCode == 200 || response.statusCode == 201) {
         final extractedData =
             json.decode(response.body) as Map<dynamic, dynamic>;
         print(extractedData);
@@ -59,5 +61,6 @@ class MyNetworkManager {
       print(error);
       return null;
     }
+    return null;
   }
 }

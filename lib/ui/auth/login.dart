@@ -3,7 +3,7 @@ import 'package:quiz_juman/config/alert_top.dart';
 import 'package:quiz_juman/ui/auth/otp_auth.dart';
 
 class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+  static const routeName = '/login-screen';
 
   @override
   State<Login> createState() => _LoginState();

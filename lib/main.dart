@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_juman/config/routes_app.dart';
 import 'package:quiz_juman/ui/auth/login.dart';
+import 'package:quiz_juman/ui/home/tab_screen.dart';
+import 'package:quiz_juman/ui/splash_screen/splash_screen.dart';
 
-void main() {
+import 'config/user_preferences.dart';
+import 'config/globals.dart' as global;
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await UserPreferences().getToken();
+  (global.token == null)
+      ? global.route = Login.routeName
+      : global.route = TabScreen.routeName;
   runApp(const MyApp());
 }
 

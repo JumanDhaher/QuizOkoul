@@ -1,5 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:async';
+import '../../config/globals.dart' as global;
 
 class UserPreferences {
   Future<bool> saveName({
@@ -59,7 +60,9 @@ class UserPreferences {
 
   Future<String> getToken() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? token = prefs.getString("token");
-    return token!;
+    String? token = prefs.getString("token") ?? '';
+    global.token = prefs.getString("token") ?? null;
+
+    return token;
   }
 }

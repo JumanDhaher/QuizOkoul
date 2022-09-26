@@ -28,12 +28,12 @@ class _OtpScreenState extends State<OtpScreen> {
         children: [
           Column(
             children: [
-              const Text('Mobile'),
+              const Text('OTP auth'),
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 20),
                 child: TextField(
                   controller: controllerText,
-                  keyboardType: TextInputType.phone,
+                  keyboardType: TextInputType.number,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(
                         borderSide: BorderSide(
@@ -52,11 +52,14 @@ class _OtpScreenState extends State<OtpScreen> {
               onPressed: () async {
                 if (controllerText.text != '' && mobile != '') {
                   AuthApi().login(controllerText.text, mobile).then((value) {
-                    print(value);
+                    if (value) {
+                      Navigator.of(context).pushNamed(
+                        NameScreen.routeName,
+                      );
+                    } else {
+                      AlertTop.alertTop(context, 'error');
+                    }
                   });
-                  //   Navigator.of(context).pushNamed(
-                  //   NameScreen.routeName,
-                  // );
                 } else {
                   AlertTop.alertTop(context, 'error');
                 }
