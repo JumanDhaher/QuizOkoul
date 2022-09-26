@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:quiz_juman/config/routes_app.dart';
 import 'package:quiz_juman/ui/auth/login.dart';
 import 'package:quiz_juman/ui/home/tab_screen.dart';
-import 'package:quiz_juman/ui/splash_screen/splash_screen.dart';
 
 import 'config/user_preferences.dart';
 import 'config/globals.dart' as global;

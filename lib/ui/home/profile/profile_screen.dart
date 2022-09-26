@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_juman/api/auth_api.dart';
 import 'package:quiz_juman/config/user_preferences.dart';
 import 'package:quiz_juman/ui/auth/login.dart';
 

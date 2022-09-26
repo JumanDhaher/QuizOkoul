@@ -9,7 +9,7 @@ class LeaderboardScreen extends StatefulWidget {
 class _LeaderboardScreenState extends State<LeaderboardScreen> {
   var first = true;
 
-  var future;
+  late Future<List<dynamic>> future;
 
   @override
   void didChangeDependencies() async {

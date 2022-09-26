@@ -7,6 +7,8 @@ import 'package:quiz_juman/ui/home/tab_screen.dart';
 import '../../config/globals.dart' as global;
 
 class SplashScreens extends StatefulWidget {
+  const SplashScreens({Key? key}) : super(key: key);
+
   @override
   _SplashScreensState createState() => _SplashScreensState();
 }
