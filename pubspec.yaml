@@ -40,6 +40,7 @@ dependencies:
   shared_preferences: ^2.0.15
   timer_count_down: ^2.2.1
   flutter_share: ^2.0.0
+  phone_number: ^1.0.0
 
   hive: ^2.0.4
   hive_flutter: ^1.1.0

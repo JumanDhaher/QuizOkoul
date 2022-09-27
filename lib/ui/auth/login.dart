@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:phone_number/phone_number.dart';
 import 'package:quiz_juman/config/alert_top.dart';
 import 'package:quiz_juman/ui/auth/otp_auth.dart';
 
@@ -48,15 +49,21 @@ class _LoginState extends State<Login> {
             ],
           ),
           TextButton(
-              onPressed: () {
+              onPressed: () async {
                 if (controllerText.text != '') {
-                  Navigator.of(context).pushNamed(OtpScreen.routeName,
-                      arguments: controllerText.text);
+                  // Validate
+                  bool isValid = await PhoneNumberUtil()
+                      .validate('+966${controllerText.text}');
+                  print(isValid);
+                  if (isValid) {
+                    Navigator.of(context).pushNamed(OtpScreen.routeName,
+                        arguments: controllerText.text);
+                  }
                 } else {
                   AlertTop.alertTop(context, 'must enter your mobile');
                 }
               },
-              child: Text('Start'))
+              child: const Text('Start'))
         ],
       ),
     );
