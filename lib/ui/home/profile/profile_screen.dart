@@ -53,6 +53,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ListTile(
                     leading: Text(snapshot.data!['mobile']),
                   ),
+                  ListTile(
+                    onTap: () {
+                      UserPreferences().removeUser();
+                      Navigator.of(context).pushNamed(Login.routeName);
+                    },
+                    leading: const Text('LOGOUT'),
+                  ),
                   const Divider(),
                   const Text('My Score'),
                   ValueListenableBuilder(
@@ -111,13 +118,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         return const Center();
                       }
                     },
-                  ),
-                  ListTile(
-                    onTap: () {
-                      UserPreferences().removeUser();
-                      Navigator.of(context).pushNamed(Login.routeName);
-                    },
-                    leading: Text('LOGOUT'),
                   ),
                 ],
               ),
