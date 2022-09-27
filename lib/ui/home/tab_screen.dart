@@ -23,6 +23,7 @@ class _TabScreenState extends State<TabScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('QuizU'),
+        automaticallyImplyLeading: false,
       ),
       bottomNavigationBar: menu(),
       body: Container(

@@ -1,6 +1,5 @@
-import 'package:animated_splash_screen/animated_splash_screen.dart';
+//import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:quiz_juman/config/user_preferences.dart';
 import 'package:quiz_juman/ui/auth/login.dart';
 import 'package:quiz_juman/ui/home/tab_screen.dart';
 
@@ -24,14 +23,14 @@ class _SplashScreensState extends State<SplashScreens> {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedSplashScreen(
-        duration: 100,
-        splash: Container(
-          child: Text('QUIZ'),
-        ),
-        nextScreen: widgetScreen(),
-        splashTransition: SplashTransition.rotationTransition,
-        // pageTransitionType: PageTransitionType.fade,
-        backgroundColor: Theme.of(context).primaryColor);
+    return Container(
+        //  duration: 100,
+        //splash: Container(
+        child: widgetScreen());
+    // ),
+    //   nextScreen: widgetScreen(),
+    // splashTransition: SplashTransition.rotationTransition,
+    // pageTransitionType: PageTransitionType.fade,
+    // backgroundColor: Theme.of(context).primaryColor);
   }
 }

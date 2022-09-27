@@ -26,7 +26,7 @@ class _NameScreenState extends State<NameScreen> {
                 margin: const EdgeInsets.symmetric(horizontal: 20),
                 child: TextField(
                   controller: controllerText,
-                  keyboardType: TextInputType.phone,
+                  keyboardType: TextInputType.text,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(
                         borderSide: BorderSide(

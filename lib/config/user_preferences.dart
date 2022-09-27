@@ -1,5 +1,4 @@
 import 'package:shared_preferences/shared_preferences.dart';
-import 'dart:async';
 import '../../config/globals.dart' as global;
 
 class UserPreferences {

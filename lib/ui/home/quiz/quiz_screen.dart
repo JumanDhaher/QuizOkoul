@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_juman/ui/home/quiz/quiz_questions.dart';
 
 class QuizScreen extends StatelessWidget {
   @override
@@ -7,8 +8,10 @@ class QuizScreen extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         TextButton(
-          child: Text('Quiz Me'),
-          onPressed: () {},
+          child: const Text('Quiz Me'),
+          onPressed: () {
+            Navigator.of(context).pushReplacementNamed(QuizQuestion.routeName);
+          },
         )
       ],
     );
