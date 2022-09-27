@@ -58,6 +58,8 @@ class _LoginState extends State<Login> {
                   if (isValid) {
                     Navigator.of(context).pushNamed(OtpScreen.routeName,
                         arguments: controllerText.text);
+                  } else {
+                    AlertTop.alertTop(context, 'must enter correct mobile');
                   }
                 } else {
                   AlertTop.alertTop(context, 'must enter your mobile');

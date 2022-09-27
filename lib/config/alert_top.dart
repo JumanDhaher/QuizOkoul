@@ -1,26 +1,19 @@
+import 'package:cherry_toast/resources/arrays.dart';
 import 'package:flutter/material.dart';
-//import 'package:another_flushbar/flushbar.dart';
+import 'package:cherry_toast/cherry_toast.dart';
 
 class AlertTop {
   static void alertTop(BuildContext context, String description,
       [Color color = Colors.black45, Color colorText = Colors.black]) {
-    /*Flushbar(
-      flushbarPosition: FlushbarPosition.TOP,
-      borderRadius: BorderRadius.all(Radius.circular(8)),
-      boxShadows: [
-        BoxShadow(
-          color: color,
-          //offset: Offset(3, 3),
-          //  blurRadius: 4,
-        ),
-      ],
-      duration: Duration(seconds: 3),
-      backgroundColor: Colors.white70,
-      messageText: Text(
-        description,
-        style: TextStyle(color: colorText),
-      ),
-      margin: const EdgeInsets.all(20),
-    ).show(context);*/
+    CherryToast(
+      icon: Icons.error,
+      themeColor: Colors.pink,
+      title: Text(''),
+      displayTitle: false,
+      description: Text(description),
+      toastPosition: Position.top,
+      animationDuration: Duration(milliseconds: 1000),
+      autoDismiss: true,
+    ).show(context);
   }
 }
