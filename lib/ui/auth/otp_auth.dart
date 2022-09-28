@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_juman/api/auth_api.dart';
 import 'package:quiz_juman/ui/auth/name.dart';
+import 'package:quiz_juman/ui/home/tab_screen.dart';
 
 import '../../config/alert_top.dart';
 import '../../config/empty_state.dart';
@@ -67,11 +68,22 @@ class _OtpScreenState extends State<OtpScreen> {
             ElevatedButton(
                 onPressed: () async {
                   if (controllerText.text != '' && mobile != '') {
+                    FocusScopeNode currentFocus = FocusScope.of(context);
+                    if (!currentFocus.hasPrimaryFocus) {
+                      currentFocus.unfocus();
+                    }
                     AuthApi().login(controllerText.text, mobile).then((value) {
-                      if (value) {
-                        Navigator.of(context).pushNamed(
-                          NameScreen.routeName,
-                        );
+                      if (value!['success']) {
+                        print(value['name']);
+                        if (value['name'] == null) {
+                          Navigator.of(context).pushNamed(
+                            NameScreen.routeName,
+                          );
+                        } else {
+                          Navigator.of(context).pushNamed(
+                            TabScreen.routeName,
+                          );
+                        }
                       } else {
                         AlertTop.alertTop(context, 'OTP code is Not corrext');
                       }
