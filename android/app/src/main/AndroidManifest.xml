@@ -1,5 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.quiz_juman">
+    <uses-permission android:name="android.permission.INTERNET"/> <!-- Add this -->
+
    <application
         android:label="quiz_juman"
         android:name="${applicationName}"
