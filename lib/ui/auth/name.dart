@@ -60,6 +60,10 @@ class _NameScreenState extends State<NameScreen> {
             ElevatedButton(
                 onPressed: () async {
                   if (controllerText.text != '') {
+                    FocusScopeNode currentFocus = FocusScope.of(context);
+                    if (!currentFocus.hasPrimaryFocus) {
+                      currentFocus.unfocus();
+                    }
                     AuthApi().postName(controllerText.text).then((value) {
                       if (value) {
                         Navigator.of(context).pushNamed(

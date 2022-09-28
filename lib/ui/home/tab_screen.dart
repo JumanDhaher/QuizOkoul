@@ -34,6 +34,7 @@ class _TabScreenState extends State<TabScreen> {
                   icon: const Icon(Icons.logout),
                   onPressed: () {
                     UserPreferences().removeUser();
+
                     Navigator.of(context).pushNamed(Login.routeName);
                   },
                 ),

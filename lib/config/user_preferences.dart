@@ -1,3 +1,4 @@
+import 'package:hive/hive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../config/globals.dart' as global;
 
@@ -45,6 +46,8 @@ class UserPreferences {
 
     prefs.remove("name");
     prefs.remove("token");
+    Box<Map<dynamic, dynamic>> box = Hive.box("score");
+    await box.clear();
   }
 
   Future<bool> saveToken({
