@@ -3,6 +3,7 @@ import 'package:quiz_juman/api/auth_api.dart';
 import 'package:quiz_juman/ui/auth/name.dart';
 
 import '../../config/alert_top.dart';
+import '../../config/empty_state.dart';
 
 class OtpScreen extends StatefulWidget {
   static const routeName = '/Otp-screen';
@@ -22,50 +23,66 @@ class _OtpScreenState extends State<OtpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: Column(
-        children: [
-          Column(
-            children: [
-              const Text('OTP auth'),
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 20),
-                child: TextField(
-                  controller: controllerText,
-                  keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(
-                        borderSide: BorderSide(
-                      width: 5,
-                      color: Colors.grey,
-                      style: BorderStyle.solid,
-                    )),
-                    contentPadding: EdgeInsets.only(
-                        top: 1.0, left: 13.0, right: 13.0, bottom: 1.0),
+    return GestureDetector(
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+        if (!currentFocus.hasPrimaryFocus) {
+          currentFocus.unfocus();
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Column(
+              children: [
+                const EmptyStateSvg(
+                  image: 'assets/images/otp.svg',
+                ),
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 20),
+                  child: TextField(
+                    controller: controllerText,
+                    keyboardType: TextInputType.number,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(
+                        width: 5,
+                        color: Colors.grey,
+                        style: BorderStyle.solid,
+                      )),
+                      label: Text('Enter OTP code'),
+                      hintText: 'Enter OTP code',
+                      contentPadding: EdgeInsets.only(
+                          top: 1.0, left: 13.0, right: 13.0, bottom: 1.0),
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          TextButton(
-              onPressed: () async {
-                if (controllerText.text != '' && mobile != '') {
-                  AuthApi().login(controllerText.text, mobile).then((value) {
-                    if (value) {
-                      Navigator.of(context).pushNamed(
-                        NameScreen.routeName,
-                      );
-                    } else {
-                      AlertTop.alertTop(context, 'error');
-                    }
-                  });
-                } else {
-                  AlertTop.alertTop(context, 'error');
-                }
-              },
-              child: Text('Start'))
-        ],
+              ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+                onPressed: () async {
+                  if (controllerText.text != '' && mobile != '') {
+                    AuthApi().login(controllerText.text, mobile).then((value) {
+                      if (value) {
+                        Navigator.of(context).pushNamed(
+                          NameScreen.routeName,
+                        );
+                      } else {
+                        AlertTop.alertTop(context, 'OTP code is Not corrext');
+                      }
+                    });
+                  } else {
+                    AlertTop.alertTop(context, 'The OTP code cannot be empty');
+                  }
+                },
+                child: const Text('Check'))
+          ],
+        ),
       ),
     );
   }

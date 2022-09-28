@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:quiz_juman/config/user_preferences.dart';
 import 'package:quiz_juman/ui/auth/login.dart';
 import 'package:intl/intl.dart';
 
 import '../../../api/user_info.dart';
+import '../../../config/empty_state.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -47,25 +49,56 @@ class _ProfileScreenState extends State<ProfileScreen> {
             return SingleChildScrollView(
               child: Column(
                 children: [
-                  ListTile(
-                    leading: Text(snapshot.data!['name']),
-                  ),
-                  ListTile(
-                    leading: Text(snapshot.data!['mobile']),
-                  ),
-                  ListTile(
-                    onTap: () {
-                      UserPreferences().removeUser();
-                      Navigator.of(context).pushNamed(Login.routeName);
-                    },
-                    leading: const Text('LOGOUT'),
+                  Padding(
+                    padding: const EdgeInsets.all(25.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          children: [
+                            const Text('Profile Information:'),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            Text(snapshot.data!['name']),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            Text(snapshot.data!['mobile']),
+                          ],
+                        ),
+                        SvgPicture.asset(
+                          'assets/images/profile.svg',
+                          fit: BoxFit.cover,
+                          width: 200,
+                        ),
+                      ],
+                    ),
                   ),
                   const Divider(),
-                  const Text('My Score'),
+                  const Padding(
+                    padding: EdgeInsets.all(4.0),
+                    child: Text(
+                      'My Score',
+                      style:
+                          TextStyle(fontSize: 30, fontWeight: FontWeight.w900),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
                   ValueListenableBuilder(
                     valueListenable: boxData.listenable(),
                     builder: (BuildContext context,
                         Box<Map<dynamic, dynamic>> value, Widget? child) {
+                      if (boxData.isEmpty) {
+                        return Column(
+                          children: const [
+                            EmptyStateSvg(
+                              image: 'assets/images/no_data.svg',
+                            ),
+                            Text('You Didnot Have Any Score')
+                          ],
+                        );
+                      }
                       if (boxData.length > 0) {
                         return ListView.builder(
                           shrinkWrap: true,

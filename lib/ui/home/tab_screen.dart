@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_juman/ui/home/profile/profile_screen.dart';
 import 'package:quiz_juman/ui/home/quiz/quiz_screen.dart';
+import 'package:heroicons/heroicons.dart';
 
+import '../../config/user_preferences.dart';
+import '../auth/login.dart';
 import 'leaderboard/leaderboard_screen.dart';
 
 class TabScreen extends StatefulWidget {
@@ -24,6 +27,17 @@ class _TabScreenState extends State<TabScreen> {
       appBar: AppBar(
         title: const Text('QuizU'),
         automaticallyImplyLeading: false,
+        actions: _selectPageIndex != 2
+            ? null
+            : [
+                IconButton(
+                  icon: const Icon(Icons.logout),
+                  onPressed: () {
+                    UserPreferences().removeUser();
+                    Navigator.of(context).pushNamed(Login.routeName);
+                  },
+                ),
+              ],
       ),
       bottomNavigationBar: menu(),
       body: Container(
@@ -52,22 +66,33 @@ class _TabScreenState extends State<TabScreen> {
 
           /// backgroundColor: Theme.of(context).primaryColor,
           unselectedItemColor: Colors.grey,
-          selectedItemColor: Colors.purpleAccent[300],
+          selectedItemColor: const Color(0xFF6C63FF),
           currentIndex: _selectPageIndex,
           type: BottomNavigationBarType.fixed,
           showSelectedLabels: false,
           showUnselectedLabels: false,
           items: const [
             BottomNavigationBarItem(
-              icon: Icon(Icons.home),
+              icon: HeroIcon(
+                HeroIcons.home,
+                size: 24,
+                solid: true,
+              ),
               label: '',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.thirty_fps_outlined),
+              icon: HeroIcon(
+                HeroIcons.trophy,
+                size: 24,
+                solid: true,
+              ),
               label: '',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.person),
+              icon: Icon(
+                Icons.person,
+                size: 24,
+              ),
               label: '',
             ),
           ],

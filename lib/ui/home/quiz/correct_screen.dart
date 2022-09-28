@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_share/flutter_share.dart';
+import 'package:quiz_juman/config/empty_state.dart';
 import 'package:quiz_juman/ui/home/quiz/quiz_questions.dart';
 import 'package:quiz_juman/ui/home/tab_screen.dart';
 
@@ -38,10 +39,7 @@ class _CorrectAnswerState extends State<CorrectAnswer> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              '🏁',
-              style: TextStyle(fontSize: 50),
-            ),
+            const EmptyStateSvg(image: 'assets/images/trophy.svg'),
             const Text(
               'You have completed',
               style: TextStyle(fontSize: 40),

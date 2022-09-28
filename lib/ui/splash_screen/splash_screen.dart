@@ -1,8 +1,10 @@
 //import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:quiz_juman/ui/auth/login.dart';
 import 'package:quiz_juman/ui/home/tab_screen.dart';
 
+import '../../config/empty_state.dart';
 import '../../config/globals.dart' as global;
 
 class SplashScreens extends StatefulWidget {
@@ -21,12 +23,34 @@ class _SplashScreensState extends State<SplashScreens> {
     }
   }
 
+  var start = true;
+  @override
+  void didChangeDependencies() {
+    Future.delayed(const Duration(seconds: 2), () {
+      setState(() {
+        start = false;
+      });
+    });
+    super.didChangeDependencies();
+  }
+
+  @override
+  void setState(fn) {
+    if (mounted) {
+      super.setState(fn);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-        //  duration: 100,
-        //splash: Container(
-        child: widgetScreen());
+    return start
+        ? const EmptyStateSvg(
+            image: 'assets/images/splash_screen.svg',
+          )
+        : Container(
+            //  duration: 100,
+            //splash: Container(
+            child: widgetScreen());
     // ),
     //   nextScreen: widgetScreen(),
     // splashTransition: SplashTransition.rotationTransition,

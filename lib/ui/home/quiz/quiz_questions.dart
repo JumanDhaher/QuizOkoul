@@ -115,8 +115,12 @@ class _QuizQuestionState extends State<QuizQuestion> {
                         setState(() {
                           countDownFinished = true;
                         });
-                        if (countDownFinished) {
+                        if (countDownFinished && QuizQuestion.score != 0) {
                           _goToCorrectAnswer();
+                          countDownFinished = false;
+                          countdownController.pause();
+                        } else {
+                          _goToWrongPage();
                           countDownFinished = false;
                           countdownController.pause();
                         }
@@ -301,11 +305,7 @@ class _QuizQuestionState extends State<QuizQuestion> {
 
   _pressAction(snapshot, int i) {
     if (pressedAns != snapshot.data![i]['correct']) {
-      countDownFinished = false;
-      countdownController.pause();
-      Navigator.of(context).pushNamed(
-        WrongScreen.routeName,
-      );
+      _goToWrongPage();
     }
     if (questionNumber < snapshot.data!.length) {
       _controller.nextPage(
@@ -323,6 +323,14 @@ class _QuizQuestionState extends State<QuizQuestion> {
     } else {
       _goToCorrectAnswer();
     }
+  }
+
+  void _goToWrongPage() {
+    countDownFinished = false;
+    countdownController.pause();
+    Navigator.of(context).pushNamed(
+      WrongScreen.routeName,
+    );
   }
 
   void _goToCorrectAnswer() {

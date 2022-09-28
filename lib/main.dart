@@ -28,8 +28,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Quiz App',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.purple,
+      theme: Theme.of(context).copyWith(
+        colorScheme: Theme.of(context).colorScheme.copyWith(
+              primary: const Color(0xFF6C63FF),
+            ),
       ),
       initialRoute: '/',
       routes: RoutesApp.routesApp(),
