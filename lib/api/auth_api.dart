@@ -5,7 +5,7 @@ import 'api_url.dart';
 import 'my_network_manager.dart';
 
 class AuthApi {
-  Future<Map?> login(String otp, String mobile) async {
+  Future<Map<dynamic, dynamic>?> login(String otp, String mobile) async {
     const url = AppUrl.login;
     try {
       final extractedData = await MyNetworkManager.postData(
@@ -14,11 +14,12 @@ class AuthApi {
         if (extractedData['success']) {
           UserPreferences().saveToken(token: extractedData['token']);
         }
+        return extractedData;
       }
-      return extractedData;
     } catch (error) {
       //return false;
     }
+    return null;
   }
 
   Future<bool> postName(String name) async {

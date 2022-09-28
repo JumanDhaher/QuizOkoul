@@ -75,15 +75,17 @@ class _OtpScreenState extends State<OtpScreen> {
                       currentFocus.unfocus();
                     }
                     AuthApi().login(controllerText.text, mobile).then((value) {
-                      if (value!['success']) {
-                        if (value['name'] == null) {
-                          Navigator.of(context).pushNamed(
-                            NameScreen.routeName,
-                          );
-                        } else {
-                          Navigator.of(context).pushNamed(
-                            TabScreen.routeName,
-                          );
+                      if (value != null) {
+                        if (value['success']) {
+                          if (value['name'] == null) {
+                            Navigator.of(context).pushNamed(
+                              NameScreen.routeName,
+                            );
+                          } else {
+                            Navigator.of(context).pushNamed(
+                              TabScreen.routeName,
+                            );
+                          }
                         }
                       } else {
                         AlertTop.alertTop(context, 'OTP code is Not corrext');

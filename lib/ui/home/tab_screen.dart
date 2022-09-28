@@ -19,7 +19,7 @@ class TabScreen extends StatefulWidget {
 class _TabScreenState extends State<TabScreen> {
   int _selectPageIndex = 0;
   final List<Widget> _pages = [
-    QuizScreen(),
+    const QuizScreen(),
     const LeaderboardScreen(),
     const ProfileScreen(),
   ];
@@ -28,6 +28,7 @@ class _TabScreenState extends State<TabScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('QuizU'),
+        centerTitle: true,
         automaticallyImplyLeading: false,
         actions: _selectPageIndex != 2
             ? null

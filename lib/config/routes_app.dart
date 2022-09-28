@@ -12,13 +12,13 @@ class RoutesApp {
   static routesApp() {
     return {
       '/': (ctx) => const SplashScreens(),
-      OtpScreen.routeName: (ctx) => OtpScreen(),
+      OtpScreen.routeName: (ctx) => const OtpScreen(),
       NameScreen.routeName: (ctx) => NameScreen(),
-      TabScreen.routeName: (ctx) => TabScreen(),
+      TabScreen.routeName: (ctx) => const TabScreen(),
       Login.routeName: (ctx) => const Login(),
-      QuizQuestion.routeName: (ctx) => QuizQuestion(),
-      CorrectAnswer.routeName: (ctx) => CorrectAnswer(),
-      WrongScreen.routeName: (ctx) => WrongScreen()
+      QuizQuestion.routeName: (ctx) => const QuizQuestion(),
+      CorrectAnswer.routeName: (ctx) => const CorrectAnswer(),
+      WrongScreen.routeName: (ctx) => const WrongScreen()
     };
   }
 }
