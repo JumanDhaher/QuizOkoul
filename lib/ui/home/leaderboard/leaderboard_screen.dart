@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../../../api/score_api.dart';
 
 class LeaderboardScreen extends StatefulWidget {
+  const LeaderboardScreen({super.key});
+
   @override
   State<LeaderboardScreen> createState() => _LeaderboardScreenState();
 }
@@ -68,9 +70,7 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
                               ]),
                         );
                       });
-                } else {
-                  print(snapshot.error);
-                }
+                } else {}
                 return Container();
               }),
         ],

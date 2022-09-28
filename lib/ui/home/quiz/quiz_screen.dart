@@ -4,6 +4,8 @@ import 'package:quiz_juman/ui/home/quiz/quiz_questions.dart';
 import '../../../config/empty_state.dart';
 
 class QuizScreen extends StatelessWidget {
+  const QuizScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Center(

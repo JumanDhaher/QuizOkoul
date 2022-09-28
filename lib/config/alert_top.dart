@@ -8,11 +8,11 @@ class AlertTop {
     CherryToast(
       icon: Icons.error,
       themeColor: Colors.pink,
-      title: Text(''),
+      title: const Text(''),
       displayTitle: false,
       description: Text(description),
       toastPosition: Position.top,
-      animationDuration: Duration(milliseconds: 1000),
+      animationDuration: const Duration(milliseconds: 1000),
       autoDismiss: true,
     ).show(context);
   }

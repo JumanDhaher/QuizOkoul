@@ -9,6 +9,8 @@ import '../../config/empty_state.dart';
 class OtpScreen extends StatefulWidget {
   static const routeName = '/Otp-screen';
 
+  const OtpScreen({super.key});
+
   @override
   State<OtpScreen> createState() => _OtpScreenState();
 }
@@ -74,7 +76,6 @@ class _OtpScreenState extends State<OtpScreen> {
                     }
                     AuthApi().login(controllerText.text, mobile).then((value) {
                       if (value!['success']) {
-                        print(value['name']);
                         if (value['name'] == null) {
                           Navigator.of(context).pushNamed(
                             NameScreen.routeName,

@@ -13,10 +13,6 @@ class MyNetworkManager {
       };
       final response = await http.get(Uri.parse(url), headers: headers);
       final extractedData = json.decode(response.body);
-
-      print('request' + response.request.toString());
-      print(response.statusCode);
-      print(extractedData.runtimeType);
       return extractedData;
     } catch (error) {
       //throw (error);
@@ -33,9 +29,6 @@ class MyNetworkManager {
       final response = await http.get(Uri.parse(url), headers: headers);
       final extractedData = json.decode(response.body);
 
-      print('request' + response.request.toString());
-      print(response.statusCode);
-      print(extractedData);
       return extractedData;
     } catch (error) {
       return null;
@@ -49,16 +42,13 @@ class MyNetworkManager {
     try {
       final response =
           await http.post(Uri.parse(url), headers: headers, body: maps);
-      print('request' + response.request.toString());
-      print(response.statusCode);
+
       if (response.statusCode == 200 || response.statusCode == 201) {
         final extractedData =
             json.decode(response.body) as Map<dynamic, dynamic>;
-        print(extractedData);
         return extractedData;
       }
     } catch (error) {
-      print(error);
       return null;
     }
     return null;

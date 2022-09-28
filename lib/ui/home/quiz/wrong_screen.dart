@@ -6,6 +6,8 @@ import '../tab_screen.dart';
 class WrongScreen extends StatelessWidget {
   static const routeName = '/Wrong-screen';
 
+  const WrongScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

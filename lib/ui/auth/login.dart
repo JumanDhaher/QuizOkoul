@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:phone_number/phone_number.dart';
 import 'package:quiz_juman/config/alert_top.dart';
 import 'package:quiz_juman/ui/auth/otp_auth.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../config/empty_state.dart';
 
 class Login extends StatefulWidget {
   static const routeName = '/login-screen';
+
+  const Login({super.key});
 
   @override
   State<Login> createState() => _LoginState();

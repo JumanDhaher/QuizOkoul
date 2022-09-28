@@ -10,6 +10,8 @@ import 'leaderboard/leaderboard_screen.dart';
 class TabScreen extends StatefulWidget {
   static const routeName = '/tab-screen';
 
+  const TabScreen({super.key});
+
   @override
   State<TabScreen> createState() => _TabScreenState();
 }
@@ -18,8 +20,8 @@ class _TabScreenState extends State<TabScreen> {
   int _selectPageIndex = 0;
   final List<Widget> _pages = [
     QuizScreen(),
-    LeaderboardScreen(),
-    ProfileScreen(),
+    const LeaderboardScreen(),
+    const ProfileScreen(),
   ];
   @override
   Widget build(BuildContext context) {

@@ -7,6 +7,8 @@ import 'package:quiz_juman/ui/home/tab_screen.dart';
 class CorrectAnswer extends StatefulWidget {
   static const routeName = '/CorrectAnswer-screen';
 
+  const CorrectAnswer({super.key});
+
   @override
   State<CorrectAnswer> createState() => _CorrectAnswerState();
 }

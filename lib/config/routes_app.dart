@@ -11,11 +11,11 @@ import '../ui/splash_screen/splash_screen.dart';
 class RoutesApp {
   static routesApp() {
     return {
-      '/': (ctx) => SplashScreens(),
+      '/': (ctx) => const SplashScreens(),
       OtpScreen.routeName: (ctx) => OtpScreen(),
       NameScreen.routeName: (ctx) => NameScreen(),
       TabScreen.routeName: (ctx) => TabScreen(),
-      Login.routeName: (ctx) => Login(),
+      Login.routeName: (ctx) => const Login(),
       QuizQuestion.routeName: (ctx) => QuizQuestion(),
       CorrectAnswer.routeName: (ctx) => CorrectAnswer(),
       WrongScreen.routeName: (ctx) => WrongScreen()

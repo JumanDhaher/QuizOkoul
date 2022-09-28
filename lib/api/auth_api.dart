@@ -10,7 +10,6 @@ class AuthApi {
     try {
       final extractedData = await MyNetworkManager.postData(
           url, {"OTP": otp, "mobile": mobile}, {});
-      print(extractedData);
       if (extractedData != null) {
         if (extractedData['success']) {
           UserPreferences().saveToken(token: extractedData['token']);
@@ -18,7 +17,6 @@ class AuthApi {
       }
       return extractedData;
     } catch (error) {
-      print(error);
       //return false;
     }
   }
@@ -40,8 +38,7 @@ class AuthApi {
       }
       return extractedData!['success'];
     } catch (error) {
-      print(error);
-      throw (error);
+      rethrow;
     }
   }
 }

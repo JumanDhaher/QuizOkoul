@@ -1,6 +1,5 @@
 //import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:quiz_juman/ui/auth/login.dart';
 import 'package:quiz_juman/ui/home/tab_screen.dart';
 
@@ -17,7 +16,7 @@ class SplashScreens extends StatefulWidget {
 class _SplashScreensState extends State<SplashScreens> {
   widgetScreen() {
     if (global.route == Login.routeName) {
-      return Login();
+      return const Login();
     } else {
       return TabScreen();
     }

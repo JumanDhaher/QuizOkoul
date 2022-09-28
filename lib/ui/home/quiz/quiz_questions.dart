@@ -13,6 +13,8 @@ class QuizQuestion extends StatefulWidget {
   static const routeName = '/QuizQuestion-screen';
   static int score = 0;
 
+  const QuizQuestion({super.key});
+
   @override
   State<QuizQuestion> createState() => _QuizQuestionState();
 }
@@ -296,7 +298,7 @@ class _QuizQuestionState extends State<QuizQuestion> {
                 ),
               );
             } else {
-              print(snapshot.error);
+              // print(snapshot.error);
             }
             return Container();
           }),
@@ -337,14 +339,14 @@ class _QuizQuestionState extends State<QuizQuestion> {
     countDownFinished = false;
     countdownController.pause();
     ScoreApi().postScore(QuizQuestion.score.toString()).then((value) {
-      print(value);
+      //print(value);
     });
     saveScorefunction();
 
     Navigator.of(context).pushReplacementNamed(
       CorrectAnswer.routeName,
     );
-    print(QuizQuestion.score.toString());
+    // print(QuizQuestion.score.toString());
   }
 
   void saveScorefunction() {

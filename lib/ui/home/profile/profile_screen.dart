@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:quiz_juman/config/user_preferences.dart';
-import 'package:quiz_juman/ui/auth/login.dart';
 import 'package:intl/intl.dart';
 
 import '../../../api/user_info.dart';
